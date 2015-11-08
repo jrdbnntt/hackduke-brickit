@@ -45,12 +45,7 @@ export default function(app) {
 			}
 			
 			// Create & save new user + school objects - TODO
-			let user = new Parse.User({
-				email: b.email,
-				username: b.email,
-				password: b.password,
-				type: 'school'
-			});
+			
 
 			let school = new m.School({
 				name: b.name,
@@ -61,29 +56,67 @@ export default function(app) {
 				logoLink: b.logoLink
 			});
 
-			user.signUp().then(function() {				
-				school.set('user', user);
-				school.save().then(function() {
+			school.save().then(function(schoolObj) {
+				let user = new Parse.User({
+					email: b.email,
+					username: b.email,
+					password: b.password,
+					school: schoolObj,
+					role: 'admin'
+				});
+
+				user.signUp().then(function() {				
 					res.json({});
 				}, function(err) {
 					res.json({
-						err: 'Unable to create school. ' + err.message
+						err: 'Unable to create user. ' + err.message
 					});
 				});
 			}, function(err) {
 				res.json({
-					err: 'Unable to create user. ' + err.message
+					err: 'Unable to create school. ' + err.message
 				});
 			});
-			
 
 		},
 
 		signupStudent: function(req, res) {
-			req.checkBody('email','Valid email required').notEmpty().isEmail();
-			req.checkBody('password', 'Valid password required').notEmpty().isAscii().isLength(8,50);
+			const b = req.body;
 
-			// TODO
+			if(!b.email ||
+				!b.password ||
+				!b.schoolId) {
+				res.json({
+					err: 'Invalid usage'
+				});
+				return;
+			}
+			
+			// Get the school obj
+			m.School.queryByObjectId(b.schoolId).then(function(schoolObj) {
+				
+				let user = new Parse.User({
+					email: b.email,
+					username: b.email,
+					password: b.password,
+					school: schoolObj,
+					role: 'student'
+				});
+
+				user.signUp().then(function() {				
+					res.json({});
+				}, function(err) {
+					res.json({
+						err: 'Unable to create user. ' + err.message
+					});
+				});
+
+			}, function(err) {
+				res.json({
+					err: err.message
+				});
+			});
+
 		},
 
 

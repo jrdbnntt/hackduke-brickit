@@ -23,10 +23,11 @@ export default function setRoutes(app) {
 	 * UserSession
 	 */
 	e.post('/api/signup/school', r.jsonParser, r.eValidator, c.UserSession.signupSchool);
-	e.post('/api/signup/student', r.useJSON, c.UserSession.signupStudent);
-	e.post('/api/signin', r.useJSON, c.UserSession.signin);
-	e.post('/api/signout', r.useJSON, c.UserSession.signout);
+	e.post('/api/signup/student', r.jsonParser, c.UserSession.signupStudent);
+	e.post('/api/signin', r.jsonParser, c.UserSession.signin);
+	e.post('/api/signout', r.jsonParser, c.UserSession.signout);
 
+	e.post('/api/school/listAll', c.Api.School.listAll);
 
 	/**************************************************************************
 	 * Special
