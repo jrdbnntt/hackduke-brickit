@@ -8,6 +8,7 @@ html
 		title #{title}
 
 		//- Styles
+		link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
 		link(rel='stylesheet' href='/css/main.css')
 		block localCSS
 
@@ -15,12 +16,14 @@ html
 		#header
 			//- TODO
 
-		#page
+		#page.container
 			block content
 
 		#footer
 			//- TODO
 
 		//- JavaScript
+		script(src='/bower_components/jquery/dist/jquery.min.js')
+		script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
 		script(src='/js/main.js')
 		block localJS
