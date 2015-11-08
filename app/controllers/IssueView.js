@@ -6,16 +6,24 @@
 export default function(app) {
 	const m = app.model;
 	const Parse = app.Parse;
-	
+
 	app.controller.IssueView = {
 		index: function(req, res) {
 			// Get issues for user's school
+			res.render('IssueView/issueView', {
+				title: 'Issues'
+			});
+		},
+
+		query: function(req, res) {
+			const b = req.body;
+
 			let query = new Parse.Query(m.Issue);
 			query.equalTo('school', req.session.user.school);
 			query.decending('brickCount', 'updatedAt');
 
-			if(req.params.type) {
-				let types = req.params.type.split('+');
+			if(b.type) {
+				let types = b.type.split('+');
 				query.containedIn('type', types);
 			}
 
@@ -31,14 +39,13 @@ export default function(app) {
 					});
 				});
 
-				res.render('IssueView/index', {
+				res.json({
 					title: 'Issues',
 					foundIssues: foundIssues
 				});
 			}, function(err) {
-				res.render('IssueView/index', {
-					title: 'Issues',
-					foundIssues: [],
+
+				res.json({
 					err: err.message
 				});
 			});

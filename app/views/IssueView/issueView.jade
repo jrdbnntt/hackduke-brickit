@@ -1,4 +1,29 @@
 extend ../layout
 
+block localCSS
+	link(type='stylesheet' href='/css/views/issueView.css')
+
+block localJS
+	script(src='/js/views/issueView.js')
+
 block content
-	#issue-container
+	.center-block(style="padding-top: 50px").container
+
+		button#prevIssue.btn.btn-defaut.col-xs-1(type="button") &lt;
+
+		#issue-container.col-xs-10
+			.count 123
+			.bricks
+			.summary asdasd
+			.description dasdasdfasoduapd ofn asdojfn asldj fn 
+
+		button#nextIssue.btn.btn-defaut.col-xs-1(type="button") &gt;
+
+
+		#svg-container(style="display: block;")
+			.build
+				include ./brickBuild.svg
+			.level1
+				include ./brickBlock1.svg
+			.level2
+				include ./brickBlock2.svg

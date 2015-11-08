@@ -1,0 +1,12 @@
+
+rect.brick-wall {
+	fill: #000;
+}
+
+path.brick-primary {
+	fill: blue;
+}
+
+path.brick-secondary {
+	fill: white;
+}

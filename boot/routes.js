@@ -29,6 +29,8 @@ export default function setRoutes(app) {
 
 	e.post('/api/school/listAll', c.Api.School.listAll);
 
+	e.get('/issues', c.IssueView.index);
+
 	/**************************************************************************
 	 * Special
 	 */
