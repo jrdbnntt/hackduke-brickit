@@ -75,19 +75,48 @@ block content
 	#signIn.signIn
 			.row(style="padding:200px")
 			.row(style="background-color:#4A0000;")
-				form.col-lg-4.col-lg-offset-4(name='signInForm' style='padding-top:50px; padding-bottom:25px;')
+				form#signInForm.col-lg-4.col-lg-offset-4(name='signInForm' style='padding-top:50px; padding-bottom:25px;')
 					label.sr-only(for='inputEmail') Email address
-					input#inputEmail.form-control(type='email', placeholder='Email address', required='')
+					input#inputEmail.form-control(name='email', type='email', placeholder='Email address', required='')
 					br
 					label.sr-only(for='inputPassword') Password
 					input#inputPassword.form-control(type='password', placeholder='Password', required='')
-					#signUp.hide
+					#signUp
 						br
-						label.sr-only(for='verifyPassword') Password
-						input#verifyPassword.form-control(type='password', placeholder='Verify Password')
+						label.sr-only(for='inputVerifyPassword') Verify Password
+						input#inputVerifyPassword.form-control(type='password', placeholder='Verify Password')
 						br
-						label.sr-only(for='inputUniversity') Password
+						label.sr-only(for='inputUniversity') University
 						select#inputUniversity.form-control
+						
+						.checkbox
+							label
+								input#schoolRep(type='checkbox', value='schoolRep')
+								|  University Representative?
+
+						#signUpUniversity
+							label.sr-only(for='inputUniversityName') University
+							input#inputUniversityName.form-control(type='text', placeholder='University Name')
+							br
+							label.sr-only(for='inputUniShortName') University
+							input#inputUniShortName.form-control(type='text', placeholder='University Abbreviation')
+							br
+							label.sr-only(for='inputUniLogoLink') University
+							input#inputUniLogoLink.form-control(type='text', placeholder='Logo Link')
+							br
+							label.sr-only(for='inputEmailDomains') University
+							input#inputEmailDomains.form-control(type='text', placeholder='"coolschool.edu", "my.coolschool.edu"')
+							br
+							.form-group.row
+								label.col-sm-4(for='inputPrimaryColor') Primary Color
+								.col-sm-8
+									input#inputPrimaryColor.form-control(type='color', value='#FF0000')
+							
+							.form-group.row
+								label.col-sm-4(for='inputPrimaryColor') Secondary Color
+								.col-sm-8
+									input#inputSecondaryColor.form-control(type='color', placeholder='Secondary Color')
+					br
 					.checkbox
 						label
 							input(type='checkbox', value='remember-me')
