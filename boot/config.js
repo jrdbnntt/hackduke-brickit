@@ -13,6 +13,7 @@ import Parse from 'parse/node';
 // Utility
 import moment from 'moment';
 import _ from 'lodash';
+import validator from 'validator';
 import path from 'path';
 import util from 'util';
 
@@ -30,6 +31,7 @@ export default function configureApp() {
 	// Save utility references
 	app.moment = moment;
 	app._ = _;
+	app.validator = validator;
 	app.validate = validate;
 	app.path = path;
 	app.util = util;
