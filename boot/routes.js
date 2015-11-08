@@ -30,6 +30,14 @@ export default function setRoutes(app) {
 	e.post('/api/school/listAll', c.Api.School.listAll);
 
 	/**************************************************************************
+	 * Issues
+	 */
+	 e.post('/api/issues/create', r.jsonParser, c.IssueView.create);
+	 e.post('/api/issues/addBrick', r.jsonParser, c.IssueView.addBrick);
+	 e.post('/api/issues/getHasLaid', r.jsonParser, c.IssueView.getHasLaid);
+
+
+	/**************************************************************************
 	 * Special
 	 */
 

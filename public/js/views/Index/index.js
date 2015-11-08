@@ -49,7 +49,6 @@ var signUpFill = true;
 $('#signUp').hide();
 $('#signUpButton').click(function(){
 	$('#signUp').show();
-	console.log('sup')
 	if(signUpFill){
 		$.post( "/api/school/listAll" )
 		  .done(function( data ) {
@@ -63,29 +62,43 @@ $('#signUpButton').click(function(){
 		        }
 		    }
 		  });
-		  signUpFill = false
+		signUpFill = false;
 	} else {
+		if(!$('#schoolRep').is(':checked')){
 
-		
-		if(!$('#schoolRep').checked){
-			$.post( "/api/school/listAll", {
-				email: $('#inputEmail').val(),
-				password: $('#inputPassword').val(),
-				schoolId: $('#inputUniversity').val()
+			$.ajax({
+				type: "POST",
+				contentType: "application/json",
+				url: "/api/signup/student", 
+				data: JSON.stringify({
+						email: $('#inputEmail').val(),
+						password: $('#inputPassword').val(),
+						schoolId: $('#inputUniversity').val()
 
-			})
+					}), 
+				success: function( data ) {
+					  console.log( data);
+					}
+				});
 		} else {
-			$.post( "/api/school/listAll", {
-				email: $('#inputEmail').val(),
-				password: $('#inputPassword').val(),
-				name: $('#inputUniversityName').val(),
-				emaiDomains: $('#inputEmailDomains').val(),
-				shortName: $('#inputUniShortName').val(),
-				primaryColor: $('#inputPrimaryColor').val(),
-				secondaryColor: $('#inputSecondaryColor').val(),
-				logoLing: $('#inputLogoLink').val(),
-
-			})
+			$.ajax({
+				type: "POST",
+				contentType: "application/json",
+				url: "/api/signup/school", 
+				data: JSON.stringify({
+						email: $('#inputEmail').val(),
+						password: $('#inputPassword').val(),
+						name: $('#inputUniversityName').val(),
+						emaiDomains: $('#inputEmailDomains').val(),
+						shortName: $('#inputUniShortName').val(),
+						primaryColor: $('#inputPrimaryColor').val(),
+						secondaryColor: $('#inputSecondaryColor').val(),
+						logoLing: $('#inputLogoLink').val(),
+					}), 
+				success: function( data ) {
+					  console.log( data);
+					}
+				});
 		}
 
 	}
