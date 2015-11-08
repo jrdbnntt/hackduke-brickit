@@ -1,31 +1,27 @@
-// /**
-//  * School model
-//  */
-// 'use strict';
+/**
+ * Issue model
+ */
+'use strict';
 
-// export default function(app) {
-// 	const Parse = app.Parse;
-// 	const _ = app._;
-// 	const validate = app.validate;
+export default function(app) {
+	const PARSE_CLASSNAME = 'Issue';
 
-// 	const ParseIssue = Parse.Object.extend('Issue');
+	const Parse = app.Parse;
+	const _ = app._;
+	const validate = app.validate;
 
-// 	class Issue {
-// 		constructor(o) {
-// 			const p = this.p = new ParseIssue('Issue');
-// 			p.set('summary', o.summary);
-// 			p.set('description', o.description);
-// 			p.set('createdBy', o.user);
-// 			p.set('bricks', 0);
-// 			p.set('cemented', false);
-// 			p.set('subscribers', []);
+	class Issue extends Parse.Object {
+		constructor(o) {
+			super(PARSE_CLASSNAME, o);
 
-// 		}
-		
-// 		save() {
-// 			this.p.save();
-// 		}
-// 	}
+		}
 
-// 	app.model.Issue = Issue;
-// }
+		static queryByObjectId(objectId) {
+			let query = new Parse.Query(Issue);
+			return query.get(objectId);
+		}
+	}
+
+	app.model.Issue = Issue;
+	Parse.Object.registerSubclass(PARSE_CLASSNAME, Issue);
+}

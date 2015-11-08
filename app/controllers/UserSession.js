@@ -132,16 +132,23 @@ export default function(app) {
 			}
 
 			Parse.User.logIn(b.email, b.password).then(function(user) {
-				
+				req.session.user = {
+					id: user.id,
+					email: b.email,
+					role: user.get('role'),
+					school: user.get('school')
+				};
+				res.json({});
 			}, function(err) {
-				req.json({
+				res.json({
 					err: err.message
 				});
 			});
 		},
 
 		signout: function(req, res) {
-			// TODO
+			req.session.user = undefined;
+			res.json({});
 		}
 
 	};
