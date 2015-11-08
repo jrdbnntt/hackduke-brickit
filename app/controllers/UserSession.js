@@ -121,7 +121,23 @@ export default function(app) {
 
 
 		signin: function(req, res) {
-			// TODO
+			const b = req.body;
+
+			if(!b.email ||
+				!b.password) {
+				res.json({
+					err: 'Missing Credentials'
+				});
+				return;
+			}
+
+			Parse.User.logIn(b.email, b.password).then(function(user) {
+				
+			}, function(err) {
+				req.json({
+					err: err.message
+				});
+			});
 		},
 
 		signout: function(req, res) {
