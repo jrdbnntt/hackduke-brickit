@@ -1,0 +1,26 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+
+		title #{title}
+
+		//- Styles
+		link(rel='stylesheet' href='/css/main.css')
+		block localCSS
+
+	body
+		#header
+			//- TODO
+
+		#page
+			block content
+
+		#footer
+			//- TODO
+
+		//- JavaScript
+		script(src='/js/main.js')
+		block localJS
