@@ -19,7 +19,6 @@ let projEnvs = [
 	'PARSE_APP_ID',
 	'PARSE_JS_KEY',
 	'PARSE_MASTER_KEY',
-	'MANDRILL_KEY',
 	'SECRET'
 ];
 

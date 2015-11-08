@@ -1,3 +1,102 @@
 extend ../layout
+block localCSS
+	link(rel='stylesheet' href='/css/views/Index/index.css')
+
+block localJS
+	script(src='/js/views/Index/index.js')
+
 block content
-	h1 TODO
+	.overlay
+		h1
+			strong BrickIt
+		img(src='/img/BrickIt-Logo.png', alt='First slide', style="height:200px; width:220px;" )
+		h2 Raise awareness, brick-by-brick
+		i.fa.fa-arrow-down
+	#myCarousel.carousel.slide
+		// Indicators
+		ol.carousel-indicators
+			li.active(data-target='myCarousel', data-slide-to='0')
+			li(data-target='myCarousel', data-slide-to='1')
+			li(data-target='myCarousel', data-slide-to='2')
+			li(data-target='myCarousel', data-slide-to='3')
+		.carousel-inner(style="width=100%")
+			.item.active
+				img(src='/img/greybricks.png', alt='First slide' )
+			.item
+				img(src='https://www.ufalumni.ufl.edu/saa/fbook/2012_CBB/files/assets/basic-html/page81_images/0001.jpg', alt='Second slide' )
+			.item
+				img(src='http://www.littleonline.com/uploads/project_media/appalachian-state-university-living-learning-center/3.jpg', alt='Third slide')
+			.item
+				img(src='https://upload.wikimedia.org/wikipedia/commons/2/20/Landis_Hall_FSU_2013-09-05_16-16.jpg', alt='Fourth slide')
+		
+	// /.carousel
+
+	#about.container(style='padding-top: 50px; margin-top: -50px')
+		.row
+			.about-head.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				h1.about-title(style="color:#701112;") What is BrickIt?
+			
+			.about-head.col-lg-10.col-lg-offset-1.col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-8.col-xs-offset-2
+				h4.about-subtitle
+				| BrickIt is a platform for students to come together to voice issues affecting their college campus.
+				| With a platform like BrickIt, a university can understand which issues the students care about most, and implement a solution 
+				| for them.
+		.row
+			.about-head.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				h2.about-title(style="color:#701112;") How do I sign up?
+			
+			.about-head.col-lg-10.col-lg-offset-1.col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-8.col-xs-offset-2
+				h5.about-subtitle
+				| Sign up using your school email (.edu). We intend on partnering with universities so they know which issues are
+				| prevalent to their student body. We hope this keeps an open communication between universities and students.
+		.row
+			.about-head.col-lg-12.col-md-12.col-sm-12.col-xs-12
+				h2.about-title(style="color:#701112;") How do I post an issue?
+			
+			.about-head.col-lg-10.col-lg-offset-1.col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-8.col-xs-offset-2
+				h5.about-subtitle
+				| In the top right of the feed there is a "create post" button. Describe the issue in one or two sentences. Click on the category 
+				| (transportaion, social, economic, etc.) most relevant to the particular issue. Add an optional synopsis if you need more room to explain.
+				
+				div(style="padding:100px;")
+		//- .row.about-snippets
+		//- 	.col-lg-4.col-lg-offset-2.col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-8.col-xs-offset-2.about-snippet
+		//- 		.about-enso.enso1
+		//- 		p.snippet-content
+		//- 		| Maecenas iaculis sodales fermentum. Mauris a blandit sem. Aliquam faucibus aliquet sodales. Duis in volutpat lacus. Maecenas aliquam magna ligula, non porta dolor bibendum
+		//- 		| at. In laoreet est vel diam consequat dignissim. Fusce quis ornare quam. Donec vitae dui ante. Sed lorem tortor, suscipit sit amet turpis id, rutrum tincidunt mauris. Donec et vestibulum lorem
+		//- 	.col-lg-4.col-lg-offset-0.ol-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-8.col-xs-offset-2.about-snippet
+		//- 		.about-enso.enso4
+		//- 		p.snippet-content
+		//- 		| Fusce sit amet nunc quis mauris feugiat commodo vitae ut velit. Donec interdum tellus in augue elementum, condimentum semper felis gravida. Praesent faucibus elit sagittis blandit elementum. 
+		//- 		| Cras ornare diam quis ipsum tristique luctus. Nullam neque enim, tincidunt id pellentesque ac, commodo sed purus. Ut diam orci, feugiat in quam sit amet, semper consequat sem. Duis pharetra efficitur eros id viverra.
+
+
+	#signIn.signIn
+			.row(style="padding:200px")
+			.row(style="background-color:#4A0000;")
+				form.col-lg-4.col-lg-offset-4(name='signInForm' style='padding-top:50px; padding-bottom:25px;')
+					label.sr-only(for='inputEmail') Email address
+					input#inputEmail.form-control(type='email', placeholder='Email address', required='')
+					br
+					label.sr-only(for='inputPassword') Password
+					input#inputPassword.form-control(type='password', placeholder='Password', required='')
+					#signUp.hide
+						br
+						label.sr-only(for='verifyPassword') Password
+						input#verifyPassword.form-control(type='password', placeholder='Verify Password')
+						br
+						label.sr-only(for='inputUniversity') Password
+						select#inputUniversity.form-control
+					.checkbox
+						label
+							input(type='checkbox', value='remember-me')
+							|  Remember me
+					.row
+						.col-lg-6
+							button#signInButton.btn.btn-lg.btn-primary.btn-block(type='button') Sign In
+						.col-lg-6
+							button#signUpButton.btn.btn-lg.btn-primary.btn-block(type='button') Sign Up
+				
+
+			.row(style="padding:200px")
