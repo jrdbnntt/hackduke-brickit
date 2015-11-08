@@ -1,0 +1,24 @@
+{
+  "name": "hackduke-bricket",
+  "description": "hackduke-bricket",
+  "main": "server.js",
+  "authors": [
+    "jrdbnntt"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jrdbnntt/hackduke-brickit",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5"
+  }
+}
