@@ -14,6 +14,7 @@ import Parse from 'parse/node';
 import moment from 'moment';
 import _ from 'lodash';
 import path from 'path';
+import util from 'util';
 
 // Logging
 import morgan from 'morgan';
@@ -31,6 +32,7 @@ export default function configureApp() {
 	app._ = _;
 	app.validate = validate;
 	app.path = path;
+	app.util = util;
 
 	app.dirs = {
 		pub: path.resolve(__dirname + '/../public'),
